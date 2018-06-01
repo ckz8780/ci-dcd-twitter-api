@@ -21,5 +21,10 @@ user = api.get_user('@realDonaldTrump')
 # Print out their screen name and follower count
 print('User {} has {} followers.\n'.format(user.screen_name, user.followers_count))
 
+# Get follower count for the user's friends
 for friend in user.friends():
     print('Donald\'s friend {} has {} followers.'.format(friend.screen_name, friend.followers_count))
+
+# Print the 10 most recent tweets from your own timeline
+for status in tweepy.Cursor(api.home_timeline).items(10):
+    print(status.text)
